@@ -48,7 +48,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor, WebMvcConf
             if (secured != null) {
                 final AccessToken accessToken = ofNullable((KeycloakAuthenticationToken) request.getUserPrincipal())
                         .map(at -> at.getAccount().getKeycloakSecurityContext().getToken())
-                        .orElseThrow(UnauthorizedException::new);
+                        .orElseThrow(() -> new UnauthorizedException("Credentials couldn't be found on a secured endpoint"));
                 checkPermission(accessToken, secured.value());
             }
         }

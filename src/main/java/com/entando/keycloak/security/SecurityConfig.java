@@ -7,6 +7,7 @@ import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticatio
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -26,13 +27,19 @@ import java.io.IOException;
 @ConditionalOnProperty(name = "keycloak.enabled", havingValue = "true")
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
+    @Value("${entando.keycloak.sessionStateful:false}")
+    private boolean sessionStateful;
+
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         super.configure(http);
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .csrf().disable()
+
+        if (!sessionStateful) {
+            http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        }
+
+        http.csrf().disable()
                 .headers().cacheControl().disable()
                 .and()
                 .authorizeRequests()
@@ -46,7 +53,11 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
             @Override
             protected void commenceLoginRedirect(final HttpServletRequest request,
                     final HttpServletResponse response) throws IOException {
-                commenceUnauthorizedResponse(request, response);
+                if (sessionStateful) {
+                    super.commenceLoginRedirect(request, response);
+                } else {
+                    commenceUnauthorizedResponse(request, response);
+                }
             }
         };
     }

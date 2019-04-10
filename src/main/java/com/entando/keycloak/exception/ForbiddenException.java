@@ -6,8 +6,4 @@ public class ForbiddenException extends KeycloakException {
         super(message);
     }
 
-    public ForbiddenException(final String message, final Throwable throwable) {
-        super(message, throwable);
-    }
-
 }

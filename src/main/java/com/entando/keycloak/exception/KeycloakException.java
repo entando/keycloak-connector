@@ -10,8 +10,4 @@ public class KeycloakException extends RuntimeException {
         super(message);
     }
 
-    public KeycloakException(final String message, final Throwable throwable) {
-        super(message, throwable);
-    }
-
 }

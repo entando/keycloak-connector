@@ -6,6 +6,7 @@ import java.time.Instant;
 
 @Data
 public class AccessToken {
+
 	private String accessToken;
 	private int expiresIn;
 	private int refreshExpiresIn;
