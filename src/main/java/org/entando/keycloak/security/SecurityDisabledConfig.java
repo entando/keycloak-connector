@@ -1,4 +1,4 @@
-package com.entando.keycloak.security;
+package org.entando.keycloak.security;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,4 +1,4 @@
-package com.entando.keycloak.security;
+package org.entando.keycloak.security;
 
 import lombok.Getter;
 import org.keycloak.representations.AccessToken;

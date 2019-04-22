@@ -1,4 +1,4 @@
-package com.entando.keycloak.exception;
+package org.entando.keycloak.exception;
 
 public class ForbiddenException extends KeycloakException {
 

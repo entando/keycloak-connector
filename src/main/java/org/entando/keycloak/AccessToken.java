@@ -1,4 +1,4 @@
-package com.entando.keycloak;
+package org.entando.keycloak;
 
 import lombok.Data;
 

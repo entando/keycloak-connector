@@ -1,6 +1,6 @@
-package com.entando.keycloak.resolvers;
+package org.entando.keycloak.resolvers;
 
-import com.entando.keycloak.security.AuthenticatedUser;
+import org.entando.keycloak.security.AuthenticatedUser;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

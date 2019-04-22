@@ -1,7 +1,7 @@
-package com.entando.keycloak.security;
+package org.entando.keycloak.security;
 
-import com.entando.keycloak.exception.ForbiddenException;
-import com.entando.keycloak.exception.UnauthorizedException;
+import org.entando.keycloak.exception.ForbiddenException;
+import org.entando.keycloak.exception.UnauthorizedException;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.keycloak.representations.AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;

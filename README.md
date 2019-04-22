@@ -6,7 +6,7 @@ Just add the dependency on your `pom.xml` file
 
 ```
 <dependency>
-    <groupId>com.entando</groupId>
+    <groupId>org.entando</groupId>
     <artifactId>keycloak-connector</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
@@ -33,10 +33,10 @@ keycloak.public-client=false
 ### Exceptions
 This project throw two exceptions.
 
-#### com.entando.keycloak.ForbiddenException
+#### org.entando.keycloak.ForbiddenException
 Thrown when the user doesn't have rights to execute an operation.
 
-#### com.entando.keycloak.UnauthorizedException
+#### org.entando.keycloak.UnauthorizedException
 Thrown when no credential is provided on a secured endpoint.
 
 ### Resolvers

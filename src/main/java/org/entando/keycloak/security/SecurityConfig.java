@@ -1,4 +1,4 @@
-package com.entando.keycloak.security;
+package org.entando.keycloak.security;
 
 import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
