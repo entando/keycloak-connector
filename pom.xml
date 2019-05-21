@@ -47,7 +47,6 @@
         <maven.snapshot.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.snapshot.repository.url>
         <maven.release.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.release.repository.url>
         <!-- Below property indicates the pattern of the test suite -->
-
     </properties>
 
     <dependencies>
