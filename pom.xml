@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>org.entando</groupId>
+    <groupId>org.entando.entando</groupId>
     <artifactId>keycloak-connector</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
@@ -25,9 +25,22 @@
         <name>Entando Inc.</name>
         <url>http://www.entando.com/</url>
     </organization>
+    <developers>
+        <developer>
+            <id>a.barnard</id>
+            <name>Ampie Barnard</name>
+            <email>a.barnard@entando.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git@github.com:entando/keycloak-commons.git</connection>
+        <developerConnection>scm:git:git@github.com:entando/keycloak-commons.git</developerConnection>
+        <url>https://github.com/entando/keycloak-commons</url>
+        <tag>master</tag>
+    </scm>
     <distributionManagement>
         <repository>
-            <id>sonatype-nexus-release</id>
+            <id>${maven.release.repository.id}</id>
             <name>Releases</name>
             <url>${maven.release.repository.url}</url>
         </repository>
@@ -45,7 +58,8 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.snapshot.repository.id>sonatype-nexus-snapshot</maven.snapshot.repository.id>
         <maven.snapshot.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.snapshot.repository.url>
-        <maven.release.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.release.repository.url>
+        <maven.relase.repository.id>sonatype-nexus-staging</maven.relase.repository.id>
+        <maven.release.repository.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</maven.release.repository.url>
         <!-- Below property indicates the pattern of the test suite -->
 
     </properties>
@@ -100,7 +114,64 @@
         </dependency>
         <!-- </required-by> -->
     </dependencies>
+    <profiles>
+        <profile>
+            <id>prepare-for-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.10.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
 
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                        <version>4.0.2</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>aggregate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <skip>true</skip>
+                            <autoUpdate>true</autoUpdate>
+                            <format>XML</format>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <build>
         <extensions>
             <extension>
@@ -110,7 +181,6 @@
             </extension>
         </extensions>
         <plugins>
-            <!-- sources jars -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -124,40 +194,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- end sources jars -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.owasp</groupId>
-                <artifactId>dependency-check-maven</artifactId>
-                <version>4.0.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <autoUpdate>true</autoUpdate>
-                    <format>XML</format>
-                </configuration>
-            </plugin>
-
             <!--do we still need this? - Ampie-->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
