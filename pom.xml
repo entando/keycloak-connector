@@ -163,7 +163,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <skip>true</skip>
+                            <skip>false</skip>
                             <autoUpdate>true</autoUpdate>
                             <format>XML</format>
                         </configuration>
