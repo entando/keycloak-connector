@@ -43,8 +43,8 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.snapshot.repository.url>${project.basedir}/src/main</maven.snapshot.repository.url>
-        <maven.release.repository.url>${project.basedir}/src/test</maven.release.repository.url>
+        <maven.snapshot.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.snapshot.repository.url>
+        <maven.release.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.release.repository.url>
         <!-- Below property indicates the pattern of the test suite -->
 
     </properties>
