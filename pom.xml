@@ -27,12 +27,12 @@
     </organization>
     <distributionManagement>
         <repository>
-            <id>nexus-release</id>
+            <id>sonatype-nexus-release</id>
             <name>Releases</name>
             <url>${maven.release.repository.url}</url>
         </repository>
         <snapshotRepository>
-            <id>nexus-snapshot</id>
+            <id>${maven.snapshot.repository.id}</id>
             <name>Snapshot</name>
             <url>${maven.snapshot.repository.url}</url>
         </snapshotRepository>
@@ -43,6 +43,7 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.snapshot.repository.url>sonatype-nexus-snapshot</maven.snapshot.repository.url>
         <maven.snapshot.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.snapshot.repository.url>
         <maven.release.repository.url>https://oss.sonatype.org/content/repositories/snapshots</maven.release.repository.url>
         <!-- Below property indicates the pattern of the test suite -->
