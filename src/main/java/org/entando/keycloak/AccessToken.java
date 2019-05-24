@@ -19,6 +19,6 @@ public class AccessToken {
 	public boolean isExpired() {
 		final Instant created = Instant.ofEpochMilli(createdTimestamp);
 		final Instant now = Instant.now();
-		return now.getEpoc hSecond() - created.getEpochSecond() > expiresIn;
+		return now.getEpochSecond() - created.getEpochSecond() > expiresIn;
 	}
 }
