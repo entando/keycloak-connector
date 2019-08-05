@@ -8,9 +8,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>test-utils</artifactId>
+    <artifactId>keycloak-connector-testutils</artifactId>
 
-    <name>test-utils</name>
+    <name>testutils</name>
 
     <description>Keycloak-connector test utilities</description>
 

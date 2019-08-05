@@ -63,6 +63,7 @@
         <maven.release.repository.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</maven.release.repository.url>
         <!-- Below property indicates the pattern of the test suite -->
     </properties>
+
     <modules>
         <module>core</module>
         <module>testutils</module>
