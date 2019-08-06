@@ -4,17 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <groupId>org.entando</groupId>
-    <artifactId>keycloak-connector</artifactId>
+    <artifactId>keycloak-connector-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <modelVersion>4.0.0</modelVersion>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>Entando Keycloak Connector</name>
     <description>Entando Module to connect keycloak into a spring-boot application</description>
     <url>http://www.entando.com/</url>
-         
+
     <licenses>
         <license>
             <name>GNU LESSER GENERAL PUBLIC LICENSE,  Version 2.1, February 1999</name>
@@ -64,24 +64,16 @@
         <!-- Below property indicates the pattern of the test suite -->
     </properties>
 
+    <modules>
+        <module>core</module>
+        <module>testutils</module>
+    </modules>
+
     <dependencies>
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>2.1.4.RELEASE</version>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-admin-client</artifactId>
+            <version>5.0.0</version>
         </dependency>
 
         <dependency>
@@ -91,47 +83,12 @@
         </dependency>
 
         <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-admin-client</artifactId>
-            <version>5.0.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>2.1.4.RELEASE</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.4.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.4.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>2.1</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- </required-by dependency="org.keycloak:keycloak-admin-client"> -->
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-client</artifactId>
-            <version>3.0.18.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jaxrs</artifactId>
-            <version>3.0.18.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jackson2-provider</artifactId>
-            <version>3.6.3.Final</version>
-        </dependency>
-        <!-- </required-by> -->
     </dependencies>
+
     <profiles>
         <profile>
             <id>prepare-for-central</id>
