@@ -25,19 +25,15 @@ public @interface WithMockKeycloakUser {
     String username() default "";
 
     /**
-     * <p>
-     * The roles to use. The default is "USER". A {@link GrantedAuthority} will be created
-     * for each value within roles. Each value in roles will automatically be prefixed
-     * with "ROLE_". For example, the default will result in "ROLE_USER" being used.
-     * </p>
-     * <p>
-     * If {@link #authorities()} is specified this property cannot be changed from the default.
-     * </p>
-     *
-     * @return
+     * The roles to use. The default is "USER".
      */
     String[] roles() default { "USER" };
 
 
+    /**
+     * The keycloak resource users has the roles. By default it will pick up the
+     * resource defined in the {keycloak.resource} configuration
+     * @return
+     */
     String resource() default "";
 }
